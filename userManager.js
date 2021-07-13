@@ -7,10 +7,10 @@ firebase.auth().onAuthStateChanged((user)=>{
     let uid
     if (user!=null) {
       uid=user.uid;
-      window.alert(uid);
+      // window.alert(uid);
 
-      if (uid=="XyoZ9dKAlcWuvB2xLa9jBleJN8v1") {
-        window.location.href="sponsor.html"
+      if (uid!=null) {
+        window.location.href="dashboard.html"
       }
      
       
