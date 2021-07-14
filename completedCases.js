@@ -20,9 +20,11 @@ function selectAllData(){
   var donationMedium;
   var donationAmount;
   var exp;
-  var desp;
+
   var medicine;
-  var nextFollowUpDate;
+  var beforeImage;
+  var afterImage;
+  var result;
 
   firebase.database().ref("finalReports").once('value',
   function(AllRecords){
@@ -43,11 +45,15 @@ function selectAllData(){
               exp=currentRecord.val().expenditure;
               desp=currentRecord.val().desp;
               medicine=currentRecord.val().medicine;
-              nextFollowUpDate=currentRecord.val().nextFollowUp;
+             afterImage=currentRecord.val().imageURL;
+             beforeImage=currentRecord.val().petImage;
+             result=currentRecord.val().result;
 
               doctorName=currentRecord.val().doctorName;
              
-              AddItemsToTable(caseNo,petName,typeOfAnimal,problem,petImage,contactNumber,address,doctorName,attends,donationReceived,donationMedium,donationAmount,exp,desp,medicine,nextFollowUpDate);
+              AddItemsToTable(caseNo,typeOfAnimal,petName,problem,contactNumber,
+                address,doctorName,attends,donationReceived,donationMedium,
+                donationAmount,exp,medicine,beforeImage,afterImage,result);
 
        
 
@@ -62,9 +68,9 @@ function selectAllData(){
     
     });
 }
-function   AddItemsToTable(caseNo,petName,typeOfAnimal,problem,petImage,contactNumber,
-  address,doctorName,attends,donationReceived,donationMedium,donationAmount,exp,desp,
-  medicine,nextFollowUpDate){
+function  AddItemsToTable(caseNo,typeOfAnimal,petName,problem,contactNumber,
+  address,doctorName,attends,donationReceived,donationMedium,
+  donationAmount,exp,medicine,beforeImage,afterImage,result){
   var tbody=document.getElementById('finalReportTable');
   var trow=document.createElement('tr');
 
@@ -84,10 +90,19 @@ function   AddItemsToTable(caseNo,petName,typeOfAnimal,problem,petImage,contactN
   var td14  =document.createElement('td')
   var td15 =document.createElement('td')
   var td16  =document.createElement('td')
+  var td17=document.createElement('td');
 
   var allBillsLink=document.createElement('a');
   allBillsLink.href="allBills.html";
  allBillsLink.innerHTML="View All Bils";
+
+ var beforeImageLink=document.createElement('a');
+ beforeImageLink.href=beforeImage;
+beforeImageLink.innerHTML="Click Here !";
+
+var afterImageLink=document.createElement('a');
+afterImageLink.href=afterImage;
+afterImageLink.innerHTML="Click Here !";
 
   td1.innerHTML= caseNo;
   td2.innerHTML= petName
@@ -102,9 +117,11 @@ function   AddItemsToTable(caseNo,petName,typeOfAnimal,problem,petImage,contactN
   td11.innerHTML= donationAmount
   td12.innerHTML= exp
   td13.append(allBillsLink);
-  td14.innerHTML= desp
-  td15.innerHTML= medicine
-  td16.innerHTML= nextFollowUpDate
+  td14.innerHTML= medicine
+  td15.append(beforeImageLink);
+  td16.append(afterImageLink);
+  td17.innerHTML=result;
+
 
 
 
@@ -125,6 +142,7 @@ trow.appendChild(td13);
 trow.appendChild(td14);
 trow.appendChild(td15);
 trow.appendChild(td16);
+trow.appendChild(td17);
 
 
 tbody.appendChild(trow);

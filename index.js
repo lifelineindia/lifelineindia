@@ -41,11 +41,11 @@ function selectAllData(){
 
 
 
-  firebase.database().ref("pendingRequests").once('value',
-  function(AllRecords){
-    AllRecords.forEach(
-      function(currentRecord){
-        var uid=currentRecord.key;
+  // firebase.database().ref("pendingRequests").once('value',
+  // function(AllRecords){
+  //   AllRecords.forEach(
+  //     function(currentRecord){
+  //       var uid=currentRecord.key;
            
          
 
@@ -76,18 +76,17 @@ function selectAllData(){
           
         }
         
-        )
+        );
        
           
         
          
 
-      }
-      
-    );
+   
     
-    });
+    // });
 }
+
 function  AddItemsToTable(uid,address,emailId,fullName,idName,idNumber,idURL,mobileNumber,ngo,ngoName,ngoNumber){
   var tbody=document.getElementById('pendingBody');
   var trow=document.createElement('tr');

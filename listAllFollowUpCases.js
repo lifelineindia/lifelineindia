@@ -47,7 +47,7 @@ function selectAllData(){
               exp=currentRecord.val().expenditure;
               desp=currentRecord.val().desp;
               medicine=currentRecord.val().medicine;
-              nextFollowUpDate=currentRecord.val().nextFollowUp;
+              nextFollowUpDate=currentRecord.val().nextFollowUpDate;
 
               doctorName=currentRecord.val().doctorName;
              
@@ -95,11 +95,16 @@ function   AddItemsToTable(caseNo,petName,typeOfAnimal,problem,petImage,contactN
   var td15 =document.createElement('td')
   var td16  =document.createElement('td')
 
+  var petImageLink=document.createElement('a');
+  petImageLink.href=petImage;
+ petImageLink.innerHTML="Click Here!";
+
+
   td1.innerHTML= caseNo;
   td2.innerHTML= petName
   td3.innerHTML= typeOfAnimal
   td4.innerHTML= problem
-  td5.innerHTML= petImage
+  td5.append(petImageLink)
   td6.innerHTML= contactNumber
   td7.innerHTML= address
   td8.innerHTML= doctorName

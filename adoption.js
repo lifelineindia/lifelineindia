@@ -33,6 +33,7 @@ function addAdoption(){
 
         }).push().key;
         window.alert("Successfully Added.");
+        window.location.reload();
 
       })
     })
