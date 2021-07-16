@@ -55,6 +55,7 @@ function selectAllData(){
           AllRecords.forEach(
             function(currentRecord){
               console.log(currentRecord.val())
+               uid=currentRecord.key;
               address=currentRecord.val().address;
               emailId=currentRecord.val().emailId;
                fullName=currentRecord.val().fullName;
@@ -123,7 +124,7 @@ function  AddItemsToTable(uid,address,emailId,fullName,idName,idNumber,idURL,mob
     })
 
 
-    window.onload=selectAllData;
+    window.alert("APPROVED")
 
     
   })
